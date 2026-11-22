@@ -10,6 +10,37 @@
 </head>
 <body>
 
+<div class="welcome-screen" id="welcomeScreen">
+
+  <img
+    src="images/welcome.png"
+    alt="EMOTiON CoCo and KYOYA"
+    class="welcome-image"
+  >
+
+  <div class="welcome-overlay"></div>
+
+  <div class="welcome-content">
+
+    <p class="welcome-label">WELCOME TO OUR WORLD</p>
+
+    <h1>EMOTiON</h1>
+
+    <div class="welcome-dialogue">
+      <p><span>CoCo：</span>おっ！来てくれたんだ！</p>
+      <p><span>KYOYA：</span>ようこそ。EMOTiONの世界へ。</p>
+    </div>
+
+    <button id="enterButton" class="enter-button">
+      ENTER THE WORLD
+      <span>→</span>
+    </button>
+
+    <p class="welcome-footer">A NEW ENTERTAINMENT EXPERIENCE</p>
+
+  </div>
+</div>
+
   <header>
     <a href="#" class="logo">EMOTiON</a>
 
@@ -86,6 +117,15 @@
   <footer>
     © 2026 EMOTiON OFFICIAL
   </footer>
+
+<script>
+  const enterButton = document.getElementById("enterButton");
+  const welcomeScreen = document.getElementById("welcomeScreen");
+
+  enterButton.addEventListener("click", () => {
+    welcomeScreen.classList.add("hide");
+  });
+</script>
 
 </body>
 </html>
