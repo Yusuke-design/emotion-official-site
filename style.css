@@ -43,16 +43,18 @@ a {
    現在のデザインを維持
 ================================= */
 
+
 .welcome-screen {
   position: fixed;
   inset: 0;
-  z-index: 1000;
+  z-index: 99999;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   background: #05050c;
-  animation: welcomeFade 1s ease;
+  opacity: 1;
+  animation: none;
 }
 
 .welcome-image {
@@ -880,3 +882,624 @@ footer {
   }
 }
 
+/* HOME MAIN VISUAL */
+
+.hero {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #080711;
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  background: #080711;
+  z-index: 0;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    90deg,
+    rgba(5, 5, 15, 0.88) 0%,
+    rgba(5, 5, 15, 0.55) 45%,
+    rgba(5, 5, 15, 0.12) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 100px 6%;
+  max-width: 850px;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 75vh;
+  }
+
+  .hero-image {
+    object-position: center;
+  }
+
+  .hero-overlay {
+    background: rgba(5, 5, 15, 0.58);
+  }
+
+  .hero-content {
+    padding: 80px 6%;
+  }
+}
+
+.member-image {
+  width: 100%;
+  height: 420px;
+  object-fit: contain;
+  object-position: center bottom;
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* =================================
+   MEMBERS：キャラクター演出
+================================= */
+
+/* カード共通 */
+.member-card {
+  position: relative;
+  transition: transform 0.35s ease,
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+}
+
+/* KYOYA：レッドネオン */
+.member-card:nth-child(1) {
+  border-color: rgba(255, 55, 75, 0.5);
+}
+
+.member-card:nth-child(1) .member-image {
+  transform: scale(1.12);
+  filter: drop-shadow(0 0 12px rgba(255, 55, 75, 0.35));
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* CoCo：パープルネオン */
+.member-card:nth-child(2) {
+  border-color: rgba(190, 70, 255, 0.6);
+}
+
+.member-card:nth-child(2) .member-image {
+  transform: scale(1.12);
+  filter: drop-shadow(0 0 14px rgba(190, 70, 255, 0.4));
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* マウスを乗せたとき */
+.member-card:nth-child(1):hover {
+  transform: translateY(-8px);
+  border-color: #ff465e;
+  box-shadow: 0 0 25px rgba(255, 55, 75, 0.3);
+}
+
+.member-card:nth-child(2):hover {
+  transform: translateY(-8px);
+  border-color: #c45bff;
+  box-shadow: 0 0 25px rgba(190, 70, 255, 0.35);
+}
+
+/* ホバー時にキャラクターを少し拡大 */
+.member-card:hover .member-image {
+  transform: scale(1.17);
+}
+
+/* スマートフォンでは拡大を控えめに */
+@media (max-width: 768px) {
+  .member-card:nth-child(1) .member-image,
+  .member-card:nth-child(2) .member-image {
+    transform: scale(1.05);
+  }
+
+  .member-card:hover .member-image {
+    transform: scale(1.08);
+  }
+}
+/* KYOYAの画像を少し大きく */
+.member-card:nth-child(1) .member-image {
+  transform: scale(1.22);
+}
+
+/* KYOYAにマウスを乗せたとき */
+.member-card:nth-child(1):hover .member-image {
+  transform: scale(1.27);
+}
+
+/* =================================
+   HOME MEMBERS
+================================= */
+
+.members-intro {
+  margin: 20px 0 50px;
+  color: #aaa8bb;
+  line-height: 2;
+}
+
+.home-member-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 35px;
+}
+
+.home-member-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  text-decoration: none;
+  background: linear-gradient(145deg, #21152f, #0b0a15);
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.home-member-image {
+  height: 520px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.home-member-image img {
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  transition: transform 0.4s ease;
+}
+
+/* CoCo：紫 */
+.coco-home-card {
+  border-color: rgba(190,70,255,0.55);
+}
+
+.coco-home-card .home-member-image img {
+  filter: drop-shadow(0 0 15px rgba(190,70,255,0.3));
+}
+
+.coco-home-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 30px rgba(190,70,255,0.3);
+}
+
+/* KYOYA：赤 */
+.kyoya-home-card {
+  border-color: rgba(255,55,75,0.55);
+}
+
+.kyoya-home-card .home-member-image img {
+  filter: drop-shadow(0 0 15px rgba(255,55,75,0.3));
+}
+
+.kyoya-home-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 30px rgba(255,55,75,0.3);
+}
+
+/* プロフィール */
+.home-member-info {
+  padding: 30px;
+}
+
+.home-member-info h3 {
+  font-size: 34px;
+  margin: 0 0 15px;
+  color: #f5f0ff;
+}
+
+.home-member-role {
+  color: #00e5ff;
+  letter-spacing: 3px;
+  font-size: 13px;
+  margin-bottom: 25px;
+}
+
+.home-member-description {
+  color: #b9b6c8;
+  line-height: 2;
+  font-size: 14px;
+}
+
+.home-member-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #00e5ff;
+  letter-spacing: 2px;
+  font-size: 13px;
+}
+
+.members-more {
+  margin-top: 45px;
+  text-align: center;
+}
+
+/* =================================
+   HOME FEATURED MUSIC
+================================= */
+
+.music-intro {
+  color: #aaa8bb;
+  line-height: 2;
+  margin: 20px 0 45px;
+}
+
+.featured-track {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 45px;
+  padding: 30px;
+  background: linear-gradient(135deg, #21152f, #0b0a15);
+  border: 1px solid rgba(150, 90, 255, 0.45);
+  box-shadow: 0 0 30px rgba(100, 40, 180, 0.12);
+}
+
+.featured-track-image {
+  overflow: hidden;
+  border: 1px solid rgba(0, 220, 255, 0.35);
+}
+
+.featured-track-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s ease;
+}
+
+.featured-track-image:hover img {
+  transform: scale(1.04);
+}
+
+.featured-track-label {
+  color: #00e5ff;
+  font-size: 12px;
+  letter-spacing: 3px;
+  margin-bottom: 18px;
+}
+
+.featured-track-info h3 {
+  color: #f5efff;
+  font-size: clamp(28px, 4vw, 48px);
+  margin: 0 0 25px;
+  text-shadow: 0 0 18px rgba(180, 100, 255, 0.4);
+}
+
+.featured-track-description {
+  color: #b9b6c8;
+  line-height: 2.2;
+  font-size: 15px;
+  margin-bottom: 35px;
+}
+
+.music-button {
+  display: inline-block;
+  padding: 17px 28px;
+  color: #00e5ff;
+  border: 1px solid #00e5ff;
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: 0.3s ease;
+}
+
+.music-button:hover {
+  color: #080711;
+  background: #00e5ff;
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.4);
+}
+
+.music-more {
+  margin-top: 40px;
+  text-align: center;
+}
+
+/* =================================
+   HOME LATEST CONTENTS
+================================= */
+
+.contents-intro {
+  color: #aaa8bb;
+  line-height: 2;
+  margin: 20px 0 45px;
+}
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.social-card {
+  display: block;
+  padding: 35px;
+  color: #f5efff;
+  text-decoration: none;
+  background: linear-gradient(145deg, #21152f, #0b0a15);
+  border: 1px solid rgba(150, 90, 255, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 0 25px rgba(0, 220, 255, 0.18);
+}
+
+.social-icon {
+  font-size: 38px;
+  margin-bottom: 20px;
+}
+
+.social-card h3 {
+  font-size: 28px;
+  margin: 0 0 12px;
+}
+
+.social-category {
+  color: #00e5ff;
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.social-card p:not(.social-category) {
+  color: #b9b6c8;
+  line-height: 2;
+  font-size: 14px;
+  min-height: 56px;
+}
+
+.social-card span {
+  display: inline-block;
+  margin-top: 18px;
+  color: #00e5ff;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+/* SNSごとのカラー */
+.youtube-card:hover {
+  border-color: #ff4545;
+  box-shadow: 0 0 25px rgba(255, 60, 60, 0.2);
+}
+
+.instagram-card:hover {
+  border-color: #d36bff;
+  box-shadow: 0 0 25px rgba(211, 107, 255, 0.2);
+}
+
+.tiktok-card:hover {
+  border-color: #00e5ff;
+}
+
+.x-card:hover {
+  border-color: #ffffff;
+}
+
+.contents-more {
+  margin-top: 45px;
+  text-align: center;
+}
+
+/* =================================
+   ABOUT ACTIVITIES
+================================= */
+
+.activities-intro {
+  color: #aaa8bb;
+  line-height: 2;
+  margin: 20px 0 40px;
+}
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.activity-card {
+  position: relative;
+  display: block;
+  padding: 35px;
+  text-decoration: none;
+  color: #f5efff;
+  background: linear-gradient(145deg, #21152f, #0b0a15);
+  border: 1px solid rgba(150, 90, 255, 0.4);
+  transition: 0.35s ease;
+}
+
+.activity-card:hover {
+  transform: translateY(-7px);
+  border-color: #00e5ff;
+  box-shadow: 0 0 25px rgba(0, 220, 255, 0.18);
+}
+
+.activity-number {
+  color: #00e5ff;
+  font-size: 13px;
+  letter-spacing: 3px;
+  margin-bottom: 25px;
+}
+
+.activity-card h3 {
+  font-size: 28px;
+  margin-bottom: 18px;
+}
+
+.activity-card p {
+  color: #b9b6c8;
+  line-height: 2;
+  font-size: 14px;
+  min-height: 56px;
+}
+
+.activity-card span {
+  display: inline-block;
+  margin-top: 20px;
+  color: #00e5ff;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+/* =================================
+   MUSIC PAGE FEATURED TRACK
+================================= */
+
+.new-generation-card {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 40px;
+  padding: 30px;
+  background: linear-gradient(135deg, #21152f, #0b0a15);
+  border: 1px solid rgba(160, 80, 255, 0.5);
+  box-shadow: 0 0 30px rgba(120, 50, 220, 0.12);
+}
+
+.music-art {
+  overflow: hidden;
+  border: 1px solid rgba(0, 220, 255, 0.4);
+}
+
+.music-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s ease;
+}
+
+.music-art:hover img {
+  transform: scale(1.04);
+}
+
+.music-info h3 {
+  font-size: clamp(28px, 3.5vw, 46px);
+  line-height: 1.2;
+  margin: 20px 0;
+  color: #f5efff;
+  text-shadow: 0 0 18px rgba(180, 100, 255, 0.4);
+}
+
+.track-concept {
+  color: #00e5ff;
+  letter-spacing: 2px;
+  font-size: 13px;
+  line-height: 1.8;
+  margin-bottom: 22px;
+}
+
+.track-status {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 30px;
+  color: #00e5ff;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+/* MUSIC VIDEOS */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  margin-top: 35px;
+}
+
+.video-card {
+  padding: 20px;
+  background: linear-gradient(145deg, #21152f, #0b0a15);
+  border: 1px solid rgba(150, 90, 255, 0.35);
+  transition: 0.3s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-6px);
+  border-color: #00e5ff;
+  box-shadow: 0 0 25px rgba(0, 220, 255, 0.15);
+}
+
+.video-placeholder {
+  aspect-ratio: 16 / 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:
+    radial-gradient(circle, rgba(130, 50, 200, 0.3), transparent 65%),
+    #090812;
+  border: 1px solid rgba(0, 220, 255, 0.25);
+}
+
+.video-placeholder span {
+  color: #00e5ff;
+  letter-spacing: 3px;
+  font-size: 13px;
+}
+
+.video-card h3 {
+  color: #f5efff;
+  margin: 20px 0 8px;
+}
+
+.video-card p {
+  color: #00e5ff;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+/* DISCOGRAPHY JACKET DESIGN */
+
+.discography-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 35px;
+}
+
+.discography-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px;
+  background: linear-gradient(145deg, #21152f, #0b0a15);
+  border: 1px solid rgba(150, 90, 255, 0.4);
+  transition: 0.3s ease;
+}
+
+.discography-item:hover {
+  transform: translateY(-6px);
+  border-color: #00e5ff;
+  box-shadow: 0 0 25px rgba(0, 220, 255, 0.15);
+}
+
+.discography-item img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+.discography-item h3 {
+  color: #f5efff;
+  font-size: 20px;
+}
+
+.discography-item p {
+  color: #00e5ff;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
